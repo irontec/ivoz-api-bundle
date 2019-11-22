@@ -1,2 +1,2 @@
 # ivoz-api-bundle
-Symfony bindins for ivoz-api
+Symfony bridge for ivoz-api
