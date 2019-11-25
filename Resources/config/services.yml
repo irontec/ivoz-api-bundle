@@ -41,6 +41,7 @@ services:
 
   Ivoz\Api\Core\Security\DataAccessControlParser:
     synthetic: true
+    lazy: true
     arguments:
       $requestStack: '@request_stack'
       $tokenStorage: '@security.token_storage'
@@ -329,5 +330,5 @@ services:
   ## Controllers
   ################################################
   Ivoz\Api\Symfony\Controller\:
-    resource: '../../../Ivoz/Api/Symfony/Controller/*'
+    resource: '%kernel.project_dir%/vendor/irontec/ivoz-api/Symfony/Controller/*'
     tags: ['controller.service_arguments']
