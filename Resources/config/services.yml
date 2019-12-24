@@ -41,7 +41,6 @@ services:
 
   Ivoz\Api\Core\Security\DataAccessControlParser:
     synthetic: true
-    lazy: true
     arguments:
       $requestStack: '@request_stack'
       $tokenStorage: '@security.token_storage'
@@ -128,7 +127,6 @@ services:
     arguments:
       $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
       $resourceClassResolver: "@api_platform.resource_class_resolver"
-      $contextBuilder: "@api_platform.jsonld.context_builder"
       $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
     tags:
       -  { name: serializer.normalizer, priority: 10 }
@@ -156,7 +154,6 @@ services:
     arguments:
       $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
       $resourceClassResolver: "@api_platform.resource_class_resolver"
-      $contextBuilder: "@api_platform.jsonld.context_builder"
     tags:
       -  { name: serializer.normalizer, priority: 10 }
 
@@ -172,7 +169,6 @@ services:
   Ivoz\Api\Entity\Serializer\Normalizer\EntityDenormalizer:
     arguments:
       $createEntityFromDTO: '@Ivoz\Core\Application\Service\CreateEntityFromDTO'
-      $propertyMetadataFactory: '@api_platform.metadata.property.metadata_factory'
       $logger: '@logger'
       $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
     tags:
@@ -330,5 +326,5 @@ services:
   ## Controllers
   ################################################
   Ivoz\Api\Symfony\Controller\:
-    resource: '%kernel.project_dir%/vendor/irontec/ivoz-api/Symfony/Controller/*'
+    resource: '../../../Ivoz/Api/Symfony/Controller/*'
     tags: ['controller.service_arguments']
