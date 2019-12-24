@@ -326,5 +326,5 @@ services:
   ## Controllers
   ################################################
   Ivoz\Api\Symfony\Controller\:
-    resource: '../../../Ivoz/Api/Symfony/Controller/*'
+    resource: '%kernel.project_dir%/vendor/irontec/ivoz-api/Symfony/Controller/*'
     tags: ['controller.service_arguments']
