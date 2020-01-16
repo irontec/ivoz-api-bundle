@@ -1,6 +1,6 @@
 <?php
 
-namespace ApiBundle;
+namespace Ivoz\ApiBundle;
 
 use ApiBundle\DependencyInjection\Compiler\SearchFilterCompiler;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
