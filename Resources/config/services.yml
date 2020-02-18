@@ -210,7 +210,7 @@ services:
     decorates: "api_platform.metadata.resource.name_collection_factory"
     decoration_priority: 0
     arguments:
-      $sourceFilePath: '%kernel.project_dir%/app/config/api/'
+      $sourceFilePath: '%kernel.project_dir%/config/api/'
       $finder: '@Symfony\Component\Finder\Finder'
 
   Ivoz\Api\Swagger\Metadata\Resource\Factory\ExtractorResourceMetadataFactory:
