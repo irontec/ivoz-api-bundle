@@ -254,6 +254,7 @@ services:
     arguments:
       $classMetadataFactory: '@doctrine.orm.default_entity_manager.metadata_factory'
       $decorated: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertySwaggerContextFactory.inner'
+      $extractor: '@api_platform.metadata.extractor.yaml'
 
   Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataOverwriteFactory:
     decorates: 'api_platform.metadata.property.metadata_factory'
