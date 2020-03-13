@@ -2,7 +2,7 @@ api_platform:
 
     title: 'Ivoz Provider'
     description: 'Rest API'
-    version: 2.14.0
+    version: 3.1
 
     # Specify a name converter to use.
 #    name_converter: ~
@@ -90,7 +90,7 @@ api_platform:
             items_per_page: 30
 
             # The maximum number of items per page.
-            maximum_items_per_page: 500
+            maximum_items_per_page: 5000
 
             # The default name of the parameter handling the page number.
             page_parameter_name: '_page'
