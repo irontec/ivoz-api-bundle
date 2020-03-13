@@ -4,6 +4,7 @@
     "description": "Symfony bridge for ivoz-api",
     "license": "GPL-3.0-or-later",
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "Carlos Cruz",
@@ -18,7 +19,6 @@
             "email": "mikel@irontec.com"
         }
     ],
-    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Ivoz\\ApiBundle\\": ""
@@ -28,7 +28,7 @@
         "php": ">=7.0.19",
         "api-platform/core": "2.2.*",
         "irontec/ivoz-core-bundle": "^2.3",
-        "irontec/ivoz-api": "^2.3",
+        "irontec/ivoz-api": "^2.4",
         "gesdinet/jwt-refresh-token-bundle": "^0.6.2",
         "lexik/jwt-authentication-bundle": "^2.5",
         "nelmio/cors-bundle": "^1.5",
