@@ -69,6 +69,11 @@ services:
     tags:
       - { name: kernel.event_listener, event: kernel.exception, priority: 2 }
 
+
+  Ivoz\Api\Symfony\EventListener\StreamedRespondListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.view, priority: 8 }
+
   Ivoz\Api\EventListener\RegisterCommandListener:
     arguments:
       $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
