@@ -20,4 +20,4 @@ services:
       $urlGenerator: '@api_platform.router'
       $subresourceOperationFactory: '@api_platform.subresource_operation_factory'
     tags:
-    - { name: serializer.normalizer, priority: 32 }
+    - { name: serializer.normalizer, priority: -800 }

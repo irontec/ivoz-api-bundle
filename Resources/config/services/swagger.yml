@@ -16,12 +16,16 @@ services:
       $resourceMetadataFactory: "@api_platform.metadata.resource.metadata_factory"
       $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
       $resourceClassResolver: "@api_platform.resource_class_resolver"
+    tags:
+      - { name: serializer.normalizer, priority: 0 }
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\RequiredAttributeFixerDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
     decoration_priority: 11
     arguments:
       $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\RequiredAttributeFixerDecorator.inner'
+    tags:
+      - { name: serializer.normalizer, priority: 1 }
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\OrphanAttributeFixerDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
@@ -29,12 +33,16 @@ services:
     arguments:
       $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\OrphanAttributeFixerDecorator.inner'
       $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
+    tags:
+      - { name: serializer.normalizer, priority: 2 }
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
     decoration_priority: 10
     arguments:
       $decoratedNormalizer: '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\ReferenceFixerDecorator.inner'
+    tags:
+      - { name: serializer.normalizer, priority: 3 }
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
@@ -42,6 +50,8 @@ services:
     arguments:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\SearchFilterDecorator.inner'
+    tags:
+      - { name: serializer.normalizer, priority: 4 }
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CustomParameterDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
@@ -49,6 +59,8 @@ services:
     arguments:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CustomParameterDecorator.inner'
+    tags:
+      - { name: serializer.normalizer, priority: 5 }
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\TimezoneSelectorDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
@@ -56,6 +68,8 @@ services:
     arguments:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\TimezoneSelectorDecorator.inner'
+    tags:
+      - { name: serializer.normalizer, priority: 6 }
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CollectionResponseHeaderFixedDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
@@ -63,6 +77,8 @@ services:
     arguments:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\CollectionResponseHeaderFixedDecorator.inner'
+    tags:
+      - { name: serializer.normalizer, priority: 7 }
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\UnusedDefinitionRemover:
     decorates: 'api_platform.swagger.normalizer.documentation'
@@ -70,6 +86,8 @@ services:
     arguments:
       $decoratedNormalizer:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\UnusedDefinitionRemover.inner'
+    tags:
+      - { name: serializer.normalizer, priority: 8 }
 
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
@@ -79,6 +97,8 @@ services:
         '@Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\BasePathDecorator.inner'
       $router:
         '@router'
+    tags:
+      - { name: serializer.normalizer, priority: 9 }
 
   ################################################
   ## UI

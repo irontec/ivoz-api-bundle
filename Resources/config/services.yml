@@ -26,9 +26,9 @@ services:
 
   Ivoz\Provider\Infrastructure\Api\Jwt\UserTokenAuthenticator:
     arguments:
-    - '@lexik_jwt_authentication.jwt_manager'
-    - '@event_dispatcher'
-    - '@lexik_jwt_authentication.extractor.chain_extractor'
+      - '@lexik_jwt_authentication.jwt_manager'
+      - '@event_dispatcher'
+      - '@lexik_jwt_authentication.extractor.chain_extractor'
 
   ################################################
   ## Dependencies
@@ -120,10 +120,9 @@ services:
   ################################################
   Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer:
     arguments:
-      $classMetadataFactory: '@doctrine.orm.default_entity_manager.metadata_factory'
       $propertyMetadataFactory: '@api_platform.metadata.property.metadata_factory'
-    tags:
-      -  { name: serializer.normalizer, priority: 10 }
+  #    tags:
+  #      -  { name: serializer.normalizer, priority: 10 }
 
   Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizerInterface:
     alias: Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer
@@ -247,6 +246,11 @@ services:
       $resourceNameCollectionFactory: '@api_platform.metadata.resource.name_collection_factory'
       $defaultRole: '%api_default_role%'
 
+  ivoz.api.metadata.property.name_collection_factory.decorator:
+    class: Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory
+    decorates: api_platform.metadata.property.name_collection_factory
+    decoration_priority: -9
+
   Ivoz\Api\Swagger\Metadata\Property\Factory\PropertyMetadataLinkFactory:
     decorates: 'api_platform.metadata.property.metadata_factory'
     decoration_priority: 1
@@ -257,7 +261,6 @@ services:
     decorates: 'api_platform.metadata.property.metadata_factory'
     decoration_priority: 2
     arguments:
-      $classMetadataFactory: '@doctrine.orm.default_entity_manager.metadata_factory'
       $decorated: '@Ivoz\Api\Swagger\Metadata\Property\Factory\PropertySwaggerContextFactory.inner'
       $extractor: '@api_platform.metadata.extractor.yaml'
 
@@ -269,7 +272,7 @@ services:
       $reader: '@annotation_reader'
 
   Ivoz\Api\Swagger\Metadata\Property\IdentifiersExtractor:
-    decorates: 'api_platform.identifiers_extractor'
+    decorates: 'api_platform.identifiers_extractor.cached'
     decoration_priority: 10
     arguments:
       $decoratedIdentifiersExtractor: '@Ivoz\Api\Swagger\Metadata\Property\IdentifiersExtractor.inner'
@@ -292,6 +295,13 @@ services:
   ################################################
   ## ORM
   ################################################
+  Ivoz\Api\Doctrine\Orm\Extension\SecurityFilterExtension:
+    arguments:
+      $dataAccessControlParser: '@Ivoz\Api\Core\Security\DataAccessControlParser'
+    tags:
+      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 11 }
+      - { name: api_platform.doctrine.orm.query_extension.item, priority: 11 }
+
   Ivoz\Api\Doctrine\Orm\Extension\DynamicLoadingExtension:
     arguments:
       - '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
@@ -304,13 +314,6 @@ services:
       - { name: api_platform.doctrine.orm.query_extension.collection, priority: 10 }
       - { name: api_platform.doctrine.orm.query_extension.item, priority: 10 }
 
-  Ivoz\Api\Doctrine\Orm\Extension\SecurityFilterExtension:
-    arguments:
-      $dataAccessControlParser: '@Ivoz\Api\Core\Security\DataAccessControlParser'
-    tags:
-      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 11 }
-      - { name: api_platform.doctrine.orm.query_extension.item, priority: 11 }
-
   Ivoz\Api\Doctrine\Orm\Extension\UnpaginatedResultGeneratorExtension:
     arguments:
       $requestStack: '@request_stack'
@@ -320,13 +323,13 @@ services:
       $clientEnabled: '%api_platform.collection.pagination.client_enabled%'
       $enabledParameterName: '%api_platform.collection.pagination.enabled_parameter_name%'
     tags:
-      - { name: api_platform.doctrine.orm.query_extension.collection, priority: 9 }
+      - { name: api_platform.doctrine.orm.query_extension.collection, priority: -64 }
 
   Ivoz\Api\Doctrine\Orm\Extension\CollectionExtensionList:
     calls:
-        - [ addExtension, ['@api_platform.doctrine.orm.query_extension.filter'] ]
-        - [ addExtension, ['@api_platform.doctrine.orm.query_extension.pagination'] ]
-        - [ addExtension, ['@api_platform.doctrine.orm.query_extension.order'] ]
+      - [ addExtension, ['@api_platform.doctrine.orm.query_extension.filter'] ]
+      - [ addExtension, ['@api_platform.doctrine.orm.query_extension.pagination'] ]
+      - [ addExtension, ['@api_platform.doctrine.orm.query_extension.order'] ]
 
   ################################################
   ## Controllers

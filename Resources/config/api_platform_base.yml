@@ -2,10 +2,10 @@ api_platform:
 
     title: 'Ivoz Provider'
     description: 'Rest API'
-    version: 3.5
+    version: 4.0
 
     # Specify a name converter to use.
-#    name_converter: ~
+    #    name_converter: ~
 
     # Specify a path name generator to use.
     path_segment_name_generator: 'api_platform.path_segment_name_generator.underscore'
@@ -66,8 +66,8 @@ api_platform:
         # The swagger api keys.
         api_keys:
             bearer:
-              name: 'Authorization'
-              type: 'header'
+                name: 'Authorization'
+                type: 'header'
 
     collection:
         # The default order of results.
@@ -102,7 +102,7 @@ api_platform:
             items_per_page_parameter_name: '_itemsPerPage'
 
     mapping:
-      paths: '%api_mapping_paths%'
+        paths: '%api_mapping_paths%'
         # The list of paths with files or directories where the bundle will look for additional resource files.
 
     http_cache:
@@ -110,23 +110,23 @@ api_platform:
         etag: true
 
         # Default value for the response max age.
-#        max_age: ~
+        #        max_age: ~
 
         # Default value for the response shared (proxy) max age.
-#        shared_max_age: ~
+        #        shared_max_age: ~
 
         # Default values of the "Vary" HTTP header.
         vary: ['Accept']
 
         # To make all responses public by default.
-#        public: ~
+        #        public: ~
 
         invalidation:
-          # To enable the tags-based cache invalidation system.
-          enabled: false
+            # To enable the tags-based cache invalidation system.
+            enabled: false
 
-          # URLs of the Varnish servers to purge using cache tags when a resource is updated.
-          varnish_urls: []
+            # URLs of the Varnish servers to purge using cache tags when a resource is updated.
+            varnish_urls: []
 
     # The list of exceptions mapped to their HTTP status code.
     exception_to_status:
@@ -134,7 +134,7 @@ api_platform:
         Symfony\Component\Serializer\Exception\ExceptionInterface: 400
 
         # Or with a constant defined in the 'Symfony\Component\HttpFoundation\Response' class.
-        ApiPlatform\Core\Exception\InvalidArgumentException: !php/const:Symfony\Component\HttpFoundation\Response::HTTP_BAD_REQUEST
+        ApiPlatform\Core\Exception\InvalidArgumentException: !php/const Symfony\Component\HttpFoundation\Response::HTTP_BAD_REQUEST
 
         Doctrine\ORM\EntityNotFoundException: !php/const:Symfony\Component\HttpFoundation\Response::HTTP_UNPROCESSABLE_ENTITY
 
