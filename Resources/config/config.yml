@@ -9,22 +9,19 @@ framework:
   #translator: { fallbacks: ['%locale%'] }
   secret: '%secret%'
   router:
-    resource: '%kernel.root_dir%/config/routing.yml'
     strict_requirements: ~
-  templating:
-    engines: ['twig']
+#  templating:
+#    engines: ['twig']
   form: ~
   csrf_protection: ~
   validation: { enable_annotations: false }
   serializer:
     enabled: true
   default_locale: '%locale%'
-  trusted_hosts: ~
-  trusted_proxies: ~
   session:
     # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
     handler_id:  session.handler.native_file
-    save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    save_path:   "%kernel.project_dir%/var/sessions/%kernel.environment%"
   fragments: ~
   http_method_override: true
   assets: ~
