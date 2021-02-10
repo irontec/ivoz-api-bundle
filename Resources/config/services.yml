@@ -48,6 +48,13 @@ services:
   ################################################
   ## Listeners
   ################################################
+  Ivoz\Api\EventListener\RegisterCommandListener:
+    arguments:
+      $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
+      $requestId: '@Ivoz\Core\Application\RequestId'
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, priority: 1 }
+
   # Check access_control before any database is hit
   api_platform.security.listener.request.deny_access:
     class: ApiPlatform\Core\Security\EventListener\DenyAccessListener
@@ -73,13 +80,6 @@ services:
   Ivoz\Api\Symfony\EventListener\StreamedRespondListener:
     tags:
       - { name: kernel.event_listener, event: kernel.view, priority: 8 }
-
-  Ivoz\Api\EventListener\RegisterCommandListener:
-    arguments:
-      $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
-      $requestId: '@Ivoz\Core\Application\RequestId'
-    tags:
-      - { name: kernel.event_listener, event: kernel.view, priority: 33 }
 
   api_platform.doctrine.listener.view.write:
     class: Ivoz\Api\EventListener\WriteListener
