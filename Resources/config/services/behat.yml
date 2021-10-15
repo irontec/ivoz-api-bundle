@@ -4,8 +4,6 @@ services:
     autoconfigure: true
     public: false
 
-  Behatch\HttpCall\Request: ~
-
   Ivoz\Api\Behat\Context\FeatureContext:
     public: true
     arguments:
