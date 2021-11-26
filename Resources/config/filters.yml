@@ -13,6 +13,21 @@ services:
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
     tags: [ 'api_platform.filter' ]
 
+  ivoz.api.filter.search_start:
+    parent: 'ivoz.api.filter.search'
+    class: Ivoz\Api\Doctrine\Orm\Filter\SearchFilterStart
+    tags: [ 'api_platform.filter' ]
+
+  ivoz.api.filter.search_exact:
+    parent: 'ivoz.api.filter.search'
+    class: Ivoz\Api\Doctrine\Orm\Filter\SearchFilterExact
+    tags: [ 'api_platform.filter' ]
+
+  ivoz.api.filter.search_end:
+    parent: 'ivoz.api.filter.search'
+    class: Ivoz\Api\Doctrine\Orm\Filter\SearchFilterEnd
+    tags: [ 'api_platform.filter' ]
+
   ################################################
   ## Date:
   ## ?property[<after|before|strictly_after|strictly_before>]=value

@@ -7,6 +7,18 @@ services:
   ################################################
   ## Documentation
   ################################################
+#  api_platform.json_schema.schema_factory:
+#    arguments:
+  Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\DefinitionFixerDecorator:
+    decorates: 'api_platform.swagger.normalizer.documentation'
+    decoration_priority: 13
+    arguments:
+      $decoratedNormalizer: '@.inner'
+      $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
+      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
+    tags:
+      - { name: serializer.normalizer, priority: -1 }
+
   Ivoz\Api\Swagger\Serializer\DocumentationNormalizer\MissingReferenceFixerDecorator:
     decorates: 'api_platform.swagger.normalizer.documentation'
     decoration_priority: 12

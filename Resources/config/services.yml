@@ -245,9 +245,6 @@ services:
       $propertyMetadataFactory: '@Ivoz\Api\Doctrine\Orm\Metadata\Property\DoctrineOrmPropertyMetadataFactory'
       $resourceNameCollectionFactory: '@api_platform.metadata.resource.name_collection_factory'
       $defaultRole: '%api_default_role%'
-
-  ivoz.api.metadata.property.name_collection_factory.decorator:
-    class: Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory
     decorates: api_platform.metadata.property.name_collection_factory
     decoration_priority: -9
 
