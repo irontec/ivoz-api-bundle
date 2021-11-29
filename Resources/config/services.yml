@@ -273,7 +273,6 @@ services:
     decoration_priority: 10
     arguments:
       $decoratedIdentifiersExtractor: '@Ivoz\Api\Swagger\Metadata\Property\IdentifiersExtractor.inner'
-      $propertyNameCollectionFactory: '@Ivoz\Api\Entity\Metadata\Property\Factory\PropertyNameCollectionFactory'
 
   ################################################
   ## ItemDataProviders
