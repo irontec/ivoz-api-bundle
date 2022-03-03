@@ -53,11 +53,12 @@ services:
     public: false
     shared: false
     arguments:
-      $properties: ~
+      $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
       $requestStack: '@request_stack'
+      $logger: '@logger'
+      $properties: ~
       $existsParameterName: '%api_platform.collection.exists_parameter_name%'
       $nameConverter: '@?api_platform.name_converter'
-      $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
     tags:  [ 'api_platform.filter' ]
 
   ################################################
