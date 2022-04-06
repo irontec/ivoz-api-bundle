@@ -1,6 +1,6 @@
 services:
   ################################################
-  ## String: exact | partial
+  ## String: exact | partial | neq
   ################################################
   ivoz.api.filter.search:
     parent: 'api_platform.doctrine.orm.search_filter'
@@ -26,6 +26,12 @@ services:
   ivoz.api.filter.search_end:
     parent: 'ivoz.api.filter.search'
     class: Ivoz\Api\Doctrine\Orm\Filter\SearchFilterEnd
+    tags: [ 'api_platform.filter' ]
+
+  ivoz.api.filter.not_equal:
+    class: Ivoz\Api\Doctrine\Orm\Filter\NotEqualFilter
+    autowire: true
+    autoconfigure: true
     tags: [ 'api_platform.filter' ]
 
   ################################################
