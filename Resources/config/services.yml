@@ -53,7 +53,7 @@ services:
       $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
       $requestId: '@Ivoz\Core\Application\RequestId'
     tags:
-      - { name: kernel.event_listener, event: kernel.view, priority: 1 }
+      - { name: kernel.event_listener, event: kernel.view, priority: 60 }
 
   # Check access_control before any database is hit
   api_platform.security.listener.request.deny_access:
