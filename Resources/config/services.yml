@@ -37,7 +37,7 @@ services:
 
   Ivoz\Api\Core\Security\AccessControlEvaluator:
     arguments:
-      $entityManager: '@doctrine.orm.entity_manager'
+      $em: '@doctrine.orm.entity_manager'
 
   Ivoz\Api\Core\Security\DataAccessControlParser:
     synthetic: true
@@ -51,7 +51,7 @@ services:
   Ivoz\Api\EventListener\RegisterCommandListener:
     arguments:
       $eventPublisher: '@Ivoz\Core\Domain\Service\DomainEventPublisher'
-      $requestId: '@Ivoz\Core\Application\RequestId'
+      $requestId: '@Ivoz\Core\Domain\RequestId'
     tags:
       - { name: kernel.event_listener, event: kernel.view, priority: 60 }
 
@@ -86,7 +86,7 @@ services:
     arguments:
       $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $dataAccessControlParser: '@Ivoz\Api\Core\Security\DataAccessControlParser'
-      $dtoAssembler: '@Ivoz\Core\Application\Service\Assembler\DtoAssembler'
+      $dtoAssembler: '@Ivoz\Core\Domain\Service\Assembler\DtoAssembler'
     tags:
       - { name: kernel.event_listener, event: kernel.view, priority: 32 }
 
@@ -95,7 +95,7 @@ services:
     arguments:
       $entityPersister: '@Ivoz\Core\Infrastructure\Domain\Service\DoctrineEntityPersister'
       $dataAccessControlParser: '@Ivoz\Api\Core\Security\DataAccessControlParser'
-      $dtoAssembler: '@Ivoz\Core\Application\Service\Assembler\DtoAssembler'
+      $dtoAssembler: '@Ivoz\Core\Domain\Service\Assembler\DtoAssembler'
     tags:
       - { name: kernel.event_listener, event: kernel.view, priority: 32 }
 
@@ -181,7 +181,7 @@ services:
   ################################################
   Ivoz\Api\Entity\Serializer\Normalizer\EntityDenormalizer:
     arguments:
-      $createEntityFromDto: '@Ivoz\Core\Application\Service\CreateEntityFromDto'
+      $createEntityFromDto: '@Ivoz\Core\Domain\Service\CreateEntityFromDto'
       $logger: '@logger'
       $dateTimeNormalizer: '@Ivoz\Api\Entity\Serializer\Normalizer\DateTimeNormalizer'
     tags:
