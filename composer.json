@@ -26,8 +26,8 @@
     },
     "require": {
         "php": ">=7.4",
-        "irontec/ivoz-core-bundle": "^4.0.6",
-        "irontec/ivoz-api": "^4.8.5",
+        "irontec/ivoz-core-bundle": "^4.7",
+        "irontec/ivoz-api": "^4.9",
         "gesdinet/jwt-refresh-token-bundle": "^0.12",
         "lexik/jwt-authentication-bundle": "^2.5",
         "nelmio/cors-bundle": "^2.0"
