@@ -1,4 +1,9 @@
 services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
   ################################################
   ## String: exact | partial | neq
   ################################################
@@ -21,6 +26,11 @@ services:
   ivoz.api.filter.search_exact:
     parent: 'ivoz.api.filter.search'
     class: Ivoz\Api\Doctrine\Orm\Filter\SearchFilterExact
+    arguments:
+      $properties: ~
+      $requestStack: '@request_stack'
+      $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
+      $propertyMetadataFactory: "@api_platform.metadata.property.metadata_factory"
     tags: [ 'api_platform.filter' ]
 
   ivoz.api.filter.search_end:
