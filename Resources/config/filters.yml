@@ -40,6 +40,8 @@ services:
 
   ivoz.api.filter.not_equal:
     class: Ivoz\Api\Doctrine\Orm\Filter\NotEqualFilter
+    arguments:
+      $properties: ~
     autowire: true
     autoconfigure: true
     tags: [ 'api_platform.filter' ]
