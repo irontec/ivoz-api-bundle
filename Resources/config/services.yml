@@ -44,6 +44,7 @@ services:
     arguments:
       $requestStack: '@request_stack'
       $tokenStorage: '@security.token_storage'
+      $authChecker: '@security.authorization_checker'
 
   ################################################
   ## Listeners
