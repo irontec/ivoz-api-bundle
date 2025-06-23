@@ -8,3 +8,9 @@ services:
     public: true
     arguments:
       $kernel: "@kernel"
+
+  Ivoz\Api\Behat\Extension\FixerFormatter\FixerFormatterExtension:
+    public: true
+    arguments:
+      $kernel: "@kernel"
+
