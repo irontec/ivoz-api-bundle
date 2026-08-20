@@ -38,6 +38,24 @@ services:
     class: Ivoz\Api\Doctrine\Orm\Filter\SearchFilterEnd
     tags: [ 'api_platform.filter' ]
 
+  ################################################
+  ## To-many associations
+  ## ?property[]=<id>       related to any of them
+  ## ?property[all]=<ids>   related to all of them
+  ## ?exists[property]=<bool>
+  ################################################
+  ivoz.api.filter.collection:
+    class: Ivoz\Api\Doctrine\Orm\Filter\CollectionFilter
+    public: false
+    shared: false
+    arguments:
+      $properties: ~
+      $requestStack: '@request_stack'
+      $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
+    autowire: true
+    autoconfigure: true
+    tags: [ 'api_platform.filter' ]
+
   ivoz.api.filter.not_equal:
     class: Ivoz\Api\Doctrine\Orm\Filter\NotEqualFilter
     arguments:
