@@ -9,7 +9,7 @@ services:
   ## UI
   ################################################
   api_platform.hydra.normalizer.documentation:
-    class: ApiPlatform\Core\Hydra\Serializer\DocumentationNormalizer
+    class: ApiPlatform\Hydra\Serializer\DocumentationNormalizer
     public: true
     arguments:
       $resourceMetadataFactory: '@api_platform.metadata.resource.metadata_factory'
